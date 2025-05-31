@@ -37,11 +37,13 @@ public class App {
     @return uma lista contendo os identificadores das classes
      */
     public ListaSequencial<String> classes() {
-        return null;
+        ListaSequencial<String> l_classes = new ListaSequencial<>();
+
+        return l_classes;
     }
 
     /*
-    Adiciona um cliente à fila corresponde à classe informada.
+    Adiciona um cliente à fila correspondente à classe informada.
     @param classe  A classe de atendimento do cliente
     @return        A senha desse cliente no formato CXXX, sendo C a letra da classe e XXX um número (ver descrição do projeto)
     @throws        Dispara uma exceção InvalidParameterException se classe for inválida
