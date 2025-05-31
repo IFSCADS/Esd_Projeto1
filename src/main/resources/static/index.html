@@ -40,10 +40,10 @@
             const classes = await response.json();
             const select = document.getElementById('classe');
 
-            classes.forEach(classe => {
+            classes.forEach(cl => {
                 const option = document.createElement('option');
-                option.value = classe;
-                option.textContent = classe;
+                option.value = cl.classe; // valor submetido (ID)
+                option.textContent = cl.descricao; // descrição exibida ao usuário
                 select.appendChild(option);
             });
         } catch (error) {

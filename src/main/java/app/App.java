@@ -1,7 +1,6 @@
 package app;
 
 import esd.ListaSequencial;
-import org.springframework.stereotype.Service;
 
 import java.io.*;
 
@@ -26,7 +25,7 @@ public class App {
     @throws            Dispara uma exceção InvalidParameterException se não puder ler o arquivo, ou seu conteúdo for inválido
      */
     public App() {
-        // acessa o arquiovo de configurações ... que está na pasta "resources"
+        // acessa o arquivo de configurações ... que está na pasta "resources"
         InputStream config = ClassLoader.getSystemResourceAsStream(CONFIG_FILE);
 
         // processa o arquivo para obter as configurações das classes de atendimento
@@ -36,8 +35,8 @@ public class App {
     Retorna as classes de atendimento
     @return uma lista contendo os identificadores das classes
      */
-    public ListaSequencial<String> classes() {
-        ListaSequencial<String> l_classes = new ListaSequencial<>();
+    public ListaSequencial<ClasseAtendimento> classes() {
+        ListaSequencial<ClasseAtendimento> l_classes = new ListaSequencial<>();
 
         return l_classes;
     }

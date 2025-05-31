@@ -1,5 +1,6 @@
 package webrun;
 
+import app.ClasseAtendimento;
 import esd.ListaSequencial;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,8 @@ import app.App;
 
 @RestController
 public class EsdController {
+
+    record ClasseDescricao(char classe, String descricao) {}
 
     private App app = new App();
 
@@ -29,13 +32,15 @@ public class EsdController {
         return result;
     }
 
-    @GetMapping("/classes")
-    List<String> classes() {
-        ListaSequencial<String> l_classes = app.classes();
-        ArrayList<String> result = new ArrayList<>();
+    @GetMapping(value="/classes", produces="application/json")
+    List<ClasseDescricao> classes() {
+        ListaSequencial<ClasseAtendimento> l_classes = app.classes();
+        ArrayList<ClasseDescricao> result = new ArrayList<>();
+//        result.add(new ClasseDescricao('C', "Teste"));
 
         for (int j=0; j < l_classes.comprimento(); j++) {
-            result.add(l_classes.obtem(j));
+            var classe = l_classes.obtem(j);
+            result.add(new ClasseDescricao(classe.getCodigo(), classe.getDescricao()));
         }
 
         return result;
